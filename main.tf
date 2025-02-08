@@ -27,3 +27,11 @@ resource "aws_subnet" "dev_subnet_01" {
     Name = "Dev Subnet 01"
   }
 }
+
+output "development_network_id" {
+  value = aws_vpc.development_network.id
+}
+
+# output "dev_subnet_01_gateway" {
+#   value = aws_subnet.dev_subnet_01.gateway_address
+# }
