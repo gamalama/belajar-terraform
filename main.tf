@@ -20,8 +20,8 @@ resource "aws_vpc" "development_network" {
 }
 
 resource "aws_subnet" "dev_subnet_01" {
-  vpc_id            = aws_vpc.development_network.id
-#   availability_zone = "ap-southeast-1"
+  vpc_id = aws_vpc.development_network.id
+  #   availability_zone = "ap-southeast-1"
   cidr_block = "10.0.1.0/24"
   tags = {
     Name = "Dev Subnet 01"
@@ -29,11 +29,11 @@ resource "aws_subnet" "dev_subnet_01" {
 }
 
 data "aws_vpc" "existing_default_network" {
-    default = true
+  default = true
 }
 
 resource "aws_subnet" "dev_subnet_02" {
-  vpc_id = data.aws_vpc.existing_default_network.id
+  vpc_id     = data.aws_vpc.existing_default_network.id
   cidr_block = "172.31.64.0/20"
   tags = {
     Name = "Dev Subnet 02"
