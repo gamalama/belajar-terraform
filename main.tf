@@ -11,3 +11,19 @@ terraform {
 provider "aws" {
   region = "ap-southeast-1"
 }
+
+resource "aws_vpc" "development_network" {
+  cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "Development Network"
+  }
+}
+
+resource "aws_subnet" "dev_subnet_01" {
+  vpc_id            = aws_vpc.development_network.id
+#   availability_zone = "ap-southeast-1"
+  cidr_block = "10.0.1.0/24"
+  tags = {
+    Name = "Dev Subnet 01"
+  }
+}
