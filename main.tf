@@ -27,15 +27,3 @@ resource "aws_subnet" "dev_subnet_01" {
     Name = "Dev Subnet 01"
   }
 }
-
-data "aws_vpc" "existing_default_network" {
-  default = true
-}
-
-resource "aws_subnet" "dev_subnet_02" {
-  vpc_id     = data.aws_vpc.existing_default_network.id
-  cidr_block = "172.31.64.0/20"
-  tags = {
-    Name = "Dev Subnet 02"
-  }
-}
